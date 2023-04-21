@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Story } from "../types";
+import styles from "./ListItem.module.css";
 
 export type ListItemProps = Story & {
   handleRemoveItem: (item: Story) => void;
@@ -22,14 +23,14 @@ export default function ListItem({
 
   return (
     <>
-      <li key={objectID}>
+      <li key={objectID} className={styles.listItem}>
         {checked && <span>✓</span>}
         <span>
           <a href={url}>{title}</a>
         </span>
-        <span>{author}</span>
-        <span>{num_comments}</span>
-        <span>{points}</span>
+        <span>Written by:{author}</span>
+        <span>Comments: {num_comments}</span>
+        <span>Points: {points}</span>
         <label>
           Read? <input type="checkbox" onChange={handleChange} />
         </label>
